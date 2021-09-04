@@ -38,7 +38,7 @@ import {deleteLocalFiles, filterImageFromURL, validateURL} from "./util/util";
       console.error("Failed to filter image because of this error:", err)
       return res
         .status(500)
-        .send("There was a problem fetching your image. Please check the URL and try again.")
+        .send("The image at the given URL isn't accessible. Please check the URL and try again.")
     }
 
     res.sendFile(pathToFilteredImage, (err) => {
