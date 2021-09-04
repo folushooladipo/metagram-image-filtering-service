@@ -1,44 +1,57 @@
-import express from "express"
-import bodyParser from "body-parser"
+import express, {json as parseJsonBody} from "express"
 
-import {deleteLocalFiles, filterImageFromURL} from "./util/util";
+import {deleteLocalFiles, filterImageFromURL, validateURL} from "./util/util";
 
-(async () => {
-
-  // Init the Express application
+(() => {
   const app = express()
 
-  // Set the network port
   const port = process.env.PORT || 8082
 
-  // Use the body parser middleware for post requests
-  app.use(bodyParser.json())
+  app.use(parseJsonBody())
 
-  // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
-  // GET /filteredimage?image_url={{URL}}
-  // endpoint to filter an image from a public url.
-  // IT SHOULD
-  //    1
-  //    1. validate the image_url query
-  //    2. call filterImageFromURL(image_url) to filter the image
-  //    3. send the resulting file in the response
-  //    4. deletes any files on the server on finish of the response
-  // QUERY PARAMATERS
-  //    image_url: URL of a publicly accessible image
-  // RETURNS
-  //   the filtered image file [!!TIP res.sendFile(filteredpath); might be useful]
+  app.get("/filteredimage", async (req, res) => {
+    const {image_url: imageURL} = req.query
+    if (!imageURL) {
+      return res
+        .status(400)
+        .send("Error: an image URL was not supplied.")
+    }
+    if (typeof imageURL !== "string") {
+      return res
+        .status(400)
+        .send("Error: image URL must be a string.")
+    }
 
-  /**************************************************************************** */
+    const isImageURLValid = validateURL(imageURL)
+    if (!isImageURLValid) {
+      return res
+        .status(400)
+        .send("Error: the image URL supplied is not a valid URL.")
+    }
 
-  //! END @TODO1
+    let pathToFilteredImage: string
+    try {
+      pathToFilteredImage = await filterImageFromURL(imageURL)
+    } catch (err) {
+      console.error("Failed to filter image because of this error:", err)
+      return res
+        .status(500)
+        .send("The image at the given URL isn't accessible. Please check the URL and try again.")
+    }
 
-  // Root Endpoint
-  // Displays a simple message to the user
-  app.get("/", (req, res) => {
-    res.send("try GET /filteredimage?image_url={{}}")
+    res.sendFile(pathToFilteredImage, (err) => {
+      if (err) {
+        console.error("Failed to send filtered image to client because of this error:", err)
+      }
+
+      deleteLocalFiles([pathToFilteredImage])
+    })
   })
 
-  // Start the Server
+  app.get("/", (req, res) => {
+    res.send("This is the root route and it doesn't do much. Instead, try sending a request as: GET /filteredimage?image_url=SOME_URL")
+  })
+
   app.listen(port, () => {
     // eslint-disable-next-line no-console
     console.log(`Server running at http://localhost:${port}`)
