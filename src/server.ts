@@ -22,8 +22,6 @@ import {deleteLocalFiles, filterImageFromURL, validateURL} from "./util/util";
         .send("Error: image URL must be a string.")
     }
 
-    // TODO: try turning off this URL validation and see what filterImageFromURL() does
-    // when given an invalid URL or a URL to an image that can't be accessed for some reason.
     const isImageURLValid = validateURL(imageURL)
     if (!isImageURLValid) {
       return res
@@ -43,7 +41,7 @@ import {deleteLocalFiles, filterImageFromURL, validateURL} from "./util/util";
 
     res.sendFile(pathToFilteredImage, (err) => {
       if (err) {
-        console.error("Failed to send filtered image because of this error:", err)
+        console.error("Failed to send filtered image to client because of this error:", err)
       }
 
       deleteLocalFiles([pathToFilteredImage])
