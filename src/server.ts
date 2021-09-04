@@ -1,5 +1,4 @@
-import express from "express"
-import bodyParser from "body-parser"
+import express, {json as parseJsonBody} from "express"
 
 import {deleteLocalFiles, filterImageFromURL} from "./util/util";
 
@@ -11,8 +10,7 @@ import {deleteLocalFiles, filterImageFromURL} from "./util/util";
   // Set the network port
   const port = process.env.PORT || 8082
 
-  // Use the body parser middleware for post requests
-  app.use(bodyParser.json())
+  app.use(parseJsonBody())
 
   // @TODO1 IMPLEMENT A RESTFUL ENDPOINT
   // GET /filteredimage?image_url={{URL}}
