@@ -5,17 +5,16 @@ import {verify as verifyJWT} from "jsonwebtoken"
 loadEnvironmentVariables()
 
 const validateAPIKey = (req: Request, res: Response, next: NextFunction): Response => {
-  if (!req.headers || !req.headers.authorization) {
-    return res.status(400).json({error: "No authorization headers were supplied."})
+  const {api_key: apiKey} = req.query
+  if (!apiKey) {
+    return res.status(400).json({error: "No API key was supplied."})
   }
 
-  const bearerTokenParts = req.headers.authorization.split(" ")
-  if (bearerTokenParts.length !== 2) {
-    return res.status(400).json({error: "Malformed API key."})
+  if (typeof apiKey !== "string") {
+    return res.status(400).json({error: "API key must be a string."})
   }
 
-  const token = bearerTokenParts[1]
-  verifyJWT(token, process.env.JWT_SECRET, (err) => {
+  verifyJWT(apiKey, process.env.JWT_SECRET, (err) => {
     if (err) {
       return res.status(500).json({auth: false, error: "Invalid API key."})
     }
