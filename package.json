@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A microservice for filtering images. Part of the Metagram app. ",
   "main": "./src/server.ts",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf www/ || true",
