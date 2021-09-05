@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "9e0b78a2-8307-4429-a0c0-264c53d5690f",
+		"name": "metagram-image-filtering-service",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/filteredimage: Filter an image",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/filteredimage?image_url=https://rovettidesign.com/wp-content/uploads/2011/07/clouds2.jpg&api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoxNjMwODc2MDEwMTMyLCJyYW5kb21OdW1iZXIiOjAuMDM4NDMyNDI4MzMyMzQ4MjgsImlhdCI6MTYzMDg3NjAxMCwiZXhwIjozMjkzMjg4MDIwfQ.uYikUooabYfLA3hASfqbPuT6lbpeildCK9CfnjNCRX4",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"filteredimage"
+					],
+					"query": [
+						{
+							"key": "image_url",
+							"value": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Golden_tabby_and_white_kitten_n01.jpg",
+							"description": "Image that, for some reason, cannot be accessed by Jimp.",
+							"disabled": true
+						},
+						{
+							"key": "image_url",
+							"value": "https://rovettidesign.com/wp-content/uploads/2011/07/clouds2.jpg",
+							"description": "Image that can be accessed by Jimp."
+						},
+						{
+							"key": "image_url",
+							"value": "foobar",
+							"disabled": true
+						},
+						{
+							"key": "api_key",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoxNjMwODc2MDEwMTMyLCJyYW5kb21OdW1iZXIiOjAuMDM4NDMyNDI4MzMyMzQ4MjgsImlhdCI6MTYzMDg3NjAxMCwiZXhwIjozMjkzMjg4MDIwfQ.uYikUooabYfLA3hASfqbPuT6lbpeildCK9CfnjNCRX4"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "/apikey: Generate an API key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/apikey?sourceID=",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"apikey"
+					],
+					"query": [
+						{
+							"key": "sourceID",
+							"value": ""
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8082"
+		}
+	]
+}
