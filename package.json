@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "A microservice for filtering images. Part of the Metagram app. ",
   "main": "./src/server.ts",
+  "engines": {
+    "node": ">=12"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf www/ || true",
@@ -23,6 +26,7 @@
   "homepage": "https://github.com/folushooladipo/metagram-image-filtering-service#readme",
   "devDependencies": {
     "@types/express": "^4.17.0",
+    "@types/jsonwebtoken": "^8.5.5",
     "@types/node": "^11.13.17",
     "@types/validator": "^13.6.3",
     "@typescript-eslint/eslint-plugin": "^4.30.0",
@@ -32,8 +36,10 @@
     "typescript": "^3.5.3"
   },
   "dependencies": {
+    "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "jimp": "^0.16.1",
+    "jsonwebtoken": "^8.5.1",
     "rimraf": "^3.0.2",
     "validator": "^13.6.0"
   }
