@@ -2,6 +2,7 @@
 - I have added a Postman collection that contains all you need to send requests to this service.
 - Check `./deployment_screenshots` for screenshots of my Elastic Beanstalk deployment. They are supposed to be viewed in the order that they are numbered.
 - Read the [Features Implemented](#features-implemented) section for all the features I implemented.
+- I have added a Postman collection that will help in making requests. It can be found at `./metagram-image-filtering-service.postman_collection.json`.
 - Strong TypeScript coding patterns were used (variables have types, functions have return types etc) and high-quality code and logic was used- all as required in the submission rubric.
 
 ## Features implemented
