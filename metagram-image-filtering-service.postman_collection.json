@@ -14,7 +14,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{host}}/filteredimage?image_url=https://rovettidesign.com/wp-content/uploads/2011/07/clouds2.jpg&api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoxNjMwODc2MDEwMTMyLCJyYW5kb21OdW1iZXIiOjAuMDM4NDMyNDI4MzMyMzQ4MjgsImlhdCI6MTYzMDg3NjAxMCwiZXhwIjozMjkzMjg4MDIwfQ.uYikUooabYfLA3hASfqbPuT6lbpeildCK9CfnjNCRX4",
+					"raw": "{{host}}/filteredimage?image_url=https://rovettidesign.com/wp-content/uploads/2011/07/clouds2.jpg&api_key=",
 					"host": [
 						"{{host}}"
 					],
@@ -40,7 +40,7 @@
 						},
 						{
 							"key": "api_key",
-							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0aW1lIjoxNjMwODc2MDEwMTMyLCJyYW5kb21OdW1iZXIiOjAuMDM4NDMyNDI4MzMyMzQ4MjgsImlhdCI6MTYzMDg3NjAxMCwiZXhwIjozMjkzMjg4MDIwfQ.uYikUooabYfLA3hASfqbPuT6lbpeildCK9CfnjNCRX4"
+							"value": ""
 						}
 					]
 				}
