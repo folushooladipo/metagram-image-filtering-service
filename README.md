@@ -18,7 +18,7 @@ This is the Metagram Image Filtering Service. It's a microservice that enables c
 
 Metagram is a cloud application that I built as part of the the Udacity Cloud Engineering Nanodegree. You can check out the app's backend app in [this repository](https://github.com/folushooladipo/metagram-api).
 
-You need an API key to be able to filter an image, so I have added a Postman collection that includes an API key that is valid for a year. (I will invalidate the key and remove it from the collection after my project's evaluation.) So just import the collection in Postman and run its requests to see the magic.
+You need an API key to be able to filter images. See the section on [generating API keys](#getting-an-api-key) for the steps required to get a key.
 
 ## Setup
 You need to have [Node.js 12+](https://nodejs.org/en/), [Yarn](https://yarnpkg.com/) and [Git](https://git-scm.com/) installed in order to run this app.
